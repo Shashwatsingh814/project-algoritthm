@@ -1,12 +1,33 @@
 var box1,box2;
 
 function setup(){
-createCanvas(400,400);
+createCanvas(800,800);
 
-box1=createSprite(20,50,100,100);
-box2=createSprite(100,200,100,100);
+box1=createSprite(400,400,50,150);
+box1.shapeColor="red";
+box2=createSprite(100,100,150,50);
+box2.shapeColor="blue";
+
+box1.debug=true;
+box2.debug=true;
 }
 function draw(){
-  background("blue");
-  drawSprites();
+  background("black");
+
+  box2.x=World.mouseX;
+  box2.y=World.mouseY;
+
+  if(box1.x - box2.x <= (box1.width + box2.width)/2
+  && box2.x-box1.x <=(box1.width + box2.width)/2 ){
+    box1.shapeColor="yellow"
+    box2.shapeColor="yellow"
+  }
+
+  else {
+  box1.shapeColor="red"
+  box2.shapeColor="blue"
 }
+
+  drawSprites();
+} 
+
